@@ -135,3 +135,75 @@ function getMensajes(data) {
 	});
 	$("#lvw_mensajes").listview("refresh");
 }
+
+$("#enrolar").live("click",
+		function() {
+			if(facingImage == null) {
+				alert("Debe tomar una fotografia del usuario");
+				return;
+			}
+			else {
+				if ($("#formulario1").validate({
+					errorPlacement: function(error, element) {
+						if ($(element).is("select")) {
+							error.insertAfter($(element).parent());
+						}
+						else {
+							error.insertAfter(element);
+						}
+					}
+				}).form() == true) {
+					if(idDevice!=null && senderId !=null) {
+						$.ajax({ 
+							type: "POST",
+							url: "http://www.anywhere.cl/wsanywhere/services/enrolamiento/save",
+							data: {  a1 : $("#txt_rut").val(), a2 : $("#txt_password").val(), a3 : idDevice, a4 : typeDevice, 
+									 a5 : senderId, a6 : direccion, a7 : latitud, a8 : longitud, a9 : facingImage
+							},
+							crossDomain : true,
+							beforeSend: function() {
+								$.mobile.showPageLoadingMsg();
+							},				
+							success: function(data,status,jqXHR) {
+								 alert("Se ha guardado el registro")
+								 limpiaForm("#formulario1");
+							},
+							error: function(XMLHttpRequest, textStatus, errorThrown) { 
+								alert("Ocurri&oacute; un error al guardar el registro")
+								limpiaForm("#formulario1");
+							},
+							complete: function(data) {
+								$.mobile.hidePageLoadingMsg();
+								$(location).attr("href","#principal");
+							}
+						});
+					}	
+				}
+			}
+	});
+
+	$("#desenrolar").live("click",
+		function() {
+			pushNotification.unregister(successHandler, errorHandler);
+			$.ajax({ 
+				type: "POST",
+				url: "http://www.anywhere.cl/wsanywhere/services/enrolamiento/delete",
+				data: {  a1:$("#txt_rut").val(), a2:$("txt_password").val(), a3:idDevice },
+				crossDomain : true,
+				beforeSend: function() {
+					$.mobile.showPageLoadingMsg();
+				},
+				success: function(data,status,jqXHR) {
+					alert("Se ha desenrolado el dispositivo")
+					limpiaForm("#formulario1");
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) { 
+					alert("Ocurri&oacute; un error al desenrolar el dispositivo")
+					limpiaForm("#formulario1");
+				},
+				complete: function(data) {
+					$.mobile.hidePageLoadingMsg();
+					$(location).attr("href","login.html");
+				}
+			});
+		});
