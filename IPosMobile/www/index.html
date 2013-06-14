@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8"/>
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile.structure-1.2.0.min.css">
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/app.css"/>
+		<script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+		<script src="jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="js/PushNotification.js"></script>	
+		<script src="js/index.js"></script>		
+	</head> 
+	<body> 
+		<div data-role="page" id="principal">
+			<div data-role="header">
+				<h1>IPos</h1>
+			</div>
+			<div data-role="content">	
+				<ul data-role="listview">
+					<li><a href="procesos/index.html" rel="external">Procesos</a></li>
+		            <li><a href="cartera_prospectos/index.html" rel="external">Hoja de Ruta</a></li>
+					<li><a href="supervision/index.html" rel="external">Supervisi&oacute;n</a></li>
+					<li><a href="#" rel="external">Alertas</a></li>
+				</ul>		
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="login.html" id="close" data-icon="power" data-iconpos="notext">Cerrar</a>
+						</li>
+					</ul>
+				</div>			
+			</div>
+		</div>
+	</body>
+</html>
