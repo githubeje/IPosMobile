@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "cl.imasd.ipos" version   = "1.0.0">
+<widget xmlns = "http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" id = "cl.imasd.ipos" version   = "2.0.0">
 	<name>Punto de Venta Movil</name>
 	<description> Suport app for sales force</description>
 	<author href="https://www.ejedigital.cl" email="soporte@ejedigital.cl">Soporte</author>

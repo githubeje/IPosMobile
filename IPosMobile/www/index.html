@@ -37,5 +37,86 @@
 				</div>			
 			</div>
 		</div>
+		<div data-role="page" id="enrolamiento">
+			<div data-role="header" >
+				<a href="#principal" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Yo Puedo">Yo Puedo</h1>
+			   	<a href="#principal" rel="external" data-icon="home" data-iconpos="notext">Home</a>		
+			</div>
+			<div data-role="content">
+			    <form method="get" id="formulario1">	
+					<div data-role="fieldcontain">
+						<label for="txt_rut">Rut:</label>
+						<input name="txt_rut" id="txt_rut" type="text" class="required">
+					</div>
+			        <div data-role="fieldcontain">
+						<label for="txt_password">Password:</label>
+						<input name="txt_password" id="txt_password" type="password" class="required">
+					</div>
+			    </form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" onclick="capturePhotoEdit();">Capturar Foto</a></li>
+						<li><a href="#fotografia" data-icon="search" data-iconpos="notext">Ver Foto</a></li>
+						<li><a href="#" id="enrolar" data-icon="save" data-iconpos="notext">Registrar</a></li>
+						<li><a href="#" id="desenrolar" data-icon="trash" data-iconpos="notext">Desregistrar</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="fotografia" data-theme="b">
+			<div data-role="header">
+				<a href="#enrolamiento" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Yo Puedo">Yo Puedo</h1>
+			   	<a href="#principal" rel="external" data-icon="home" data-iconpos="notext">Home</a>	
+			</div>
+			<div data-role="content"  style="text-align:center">
+				<div data-role="fieldcontain">
+					<div class="ui-bar-c ui-corner-all ui-shadow center" style="padding:1em;width:400px;height:300px" >
+						<img style="position:relative;width:100%;height:96%" id="capturefacing" src="#" alt="mi foto"/>						
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div data-role="page" id="mensaje">
+			<div data-role="header" >
+				<a href="#principal" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Yo Puedo - Mensaje">IPosMobile - Notificacion</h1>
+			   	<a href="#principal" rel="external" data-icon="home" data-iconpos="notext">Home</a>					
+			</div>
+			<div data-role="content">	
+		   		<!-- <textarea cols="40" rows="8" style="height:200px;" name="txt_mensaje" id="txt_mensaje"></textarea>   -->
+		   		<div id="txt_mensaje"></div>	
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<div data-role="navbar">
+				<ul>
+					<li><a href="#respuesta" id="btn_responder">Responder</a></li>
+				</ul>
+		        </div>
+			</div>
+		</div>
+		<div data-role="page" id="respuesta">
+			<div data-role="header" >
+				<a href="#mensaje" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Yo Puedo - Respuesta">IPosMobile - Respuesta</h1>
+			   	<a href="#principal" data-icon="home" data-iconpos="notext">Home</a>	
+			</div>
+			<div data-role="content">
+				<form method="get" id="formulario2">
+					<label for="txt_respuesta">Mensaje:</label>
+			   		<textarea cols="40" rows="8" style="height:200px;" name="txt_respuesta" id="txt_respuesta"></textarea>
+			   	</form>	
+			</div>
+			<div data-role="footer" data-position="fixed">
+		    	<div data-role="navbar">
+				<ul>
+					<li><a href="#" id="response">Responder</a></li>
+				</ul>
+		        </div>
+			</div>
+		</div>
 	</body>
 </html>
