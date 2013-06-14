@@ -1,0 +1,43 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta charset="iso-8859-1"/>
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="jquery-mobile/jquery.mobile.simpledialog.min.css"/>
+		<link rel="stylesheet" type="text/css" href="jquery-mobile/app.css"/>
+		<script src="jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="jquery-mobile/jquery.validate.min.js"></script>
+        <script src="jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script src="jquery-mobile/jquery.cookie.js"></script>
+		<script src="jquery-mobile/messages_es.js"></script>		
+		<script src="js/generales.js"></script>
+		<script src="js/login.js"></script>
+	</head> 
+	<body>
+		<div data-role="page" id="login">
+			<div data-role="header">
+				<h2>IPos</h2>
+			</div>
+			<div class="ui-content" data-role="content" id="contenido">
+				<form id="formLogin" name="formLogin">
+					<div id="divlogin">
+				        <div data-role="fieldcontain">
+				        	<label for="rutPer">Usuario</label>
+		 					<input type="text" id="rutPer" name="rutPer" value="13176947-3"/>
+						</div>
+						<div data-role="fieldcontain">
+							<label for="clave">Clave</label>
+							<input type="password" id="clave" name="clave" value="jcastro"/>
+						</div>
+						 <div data-role="fieldcontain" style="text-align:center;">
+						 	<input type="submit" value="Entrar"/>
+						 </div>				
+					</div>
+				</form>
+			</div>
+		</div>		
+	</body>
+</html>

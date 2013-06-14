@@ -1,0 +1,128 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8"/>
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>	
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.jqplot.min.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">  
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.datebox.i18n.es-ES.utf8.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/moment.min.js"></script>
+        <script type="text/javascript" src="../jquery-mobile/jquery.jqplot.min.js"></script>
+		<script type="text/javascript" src="../jquery-mobile/jqplot.barRenderer.min.js"></script>
+		<script type="text/javascript" src="../jquery-mobile/jqplot.categoryAxisRenderer.min.js"></script>
+		<script type="text/javascript" src="../jquery-mobile/jqplot.pointLabels.min.js"></script><link rel="stylesheet" type="text/css" hrf="../jquery-mobile/jquery.jqplot.min.css" />
+        <script src="js/metas.js"></script>
+		<script src="../js/generales.js"></script>
+	</head> 
+	<body> 
+		<div data-role="page" id="principal">
+			<div data-role="header">
+			   	<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Metas">Ipos - Procesos - Metas</h1>
+			   	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+		      <form method="post" id="formulario">
+		         <div data-role="fieldcontain">
+			         	<label for="fecha_inicio">Fecha Inicio:</label>
+			            <input name="fecha_inicio" id="fecha_inicio" type="date" data-role="datebox" data-options='{"mode": "datebox",  "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+				</div>
+			    <div data-role="fieldcontain">
+			       	<label for="fecha_termino">Fecha Término:</label>
+			        <input name="fecha_termino" id="fecha_termino" type="date" data-role="datebox" data-options='{"mode": "datebox",  "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}' class="required">
+				</div>
+                <div data-role="fieldcontain">
+			         	<label for="filtro_metas">Metas:</label>
+			         	<select id="filtro_metas" name="filtro_metas" class="required">
+			            	<option value="" selected>Escoger Filtro</option>
+			            	<option value="S">Metas Cumplidas</option>
+			            	<option value="N">Metas No Cumplidas</option>
+			            	<option value="E">Evolucion Diaria</option>
+			            </select>
+				</div>    
+		      </form>
+		  	</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="buscar" data-icon="search" data-iconpos="notext">Buscar</a>  
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <div data-role="page" id="listado">
+			<div data-role="header">
+		    	<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Metas - Productos">Ipos - Procesos - Metas - Productos</h1>
+                <a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+		    <div data-role="content">
+		    	<ul data-role="listview" id="listado_metas">
+				</ul>
+		    </div>
+            <div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+            	<ul>
+                	<li><a href="#listado" data-role="button" >Listado</a></li>
+                	<li><a href="#grafico" data-role="button">Gráfico</a></li>
+            	</ul>
+				</div>
+			</div>
+		</div>
+        <div data-role="page" id="detalle">
+			<div data-role="header">
+		    	<a href="#listado" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Metas - Productos - Detalle">Ipos - Procesos - Metas - Productos - Detalle</h1>
+                <a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+		    <div data-role="content">
+		    	<div data-role="fieldcontain">
+                        <label for="producto">Producto:</label>
+                        <input type="text" name="producto" id="producto" readonly/>    
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="metas">Metas:</label>
+                        <input type="text" name="metas" id="metas" readonly/>
+                    </div>
+                    <div data-role="fieldcontain">
+                        <label for="ventas">Ventas:</label>
+                        <input type="text" name="ventas" id="ventas" readonly/>
+                    </div>
+		    </div>
+		</div>
+         <div data-role="page" id="grafico">
+			<div data-role="header">
+		    	<a href="#principal"  data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Metas - Productos - Gráfico">Ipos - Procesos - Metas - Productos - Gráfico</h1>
+                <a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content"  style="text-align:center">	
+				<div data-role="fieldcontain">
+					<div class="ui-bar-c ui-corner-all ui-shadow center" style="padding:1em;width:400px;height:300px" >
+						<span id="info1"></span>
+						<div id="grafico1" style="position:relative;width:100%;height:96%"></div>
+					</div>
+				</div>
+			</div>		    
+            <div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+	            	<ul>
+	                	<li><a href="#listado" data-role="button" >Listado</a></li>
+	                    <li><a href="#grafico" data-role="button">Gráfico</a></li>
+	            	</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,167 @@
+	<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8">
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>
+      	<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.datebox-1.0.1.min.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.datebox.i18n.es-ES.utf8.js"></script>		
+        <script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script src="../jquery-mobile/jquery.ui.map.js"></script>
+        <script src="../jquery-mobile/jquery.ui.map.extensions.js"></script>
+        <script src="../jquery-mobile/moment.min.js"></script>
+        <script src="../jquery-mobile/jquery.chained.js"></script>
+		<script src="../js/generales.js"></script>
+		<script src="js/seguimiento_ruta.js"></script>
+	</head> 
+	<body>
+		<div id="filtro" data-role="page">
+			<div data-role="header">
+		    	<a href="../index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Seguimiento Ruta - Filtro Ejecutivo</h1>
+			</div>
+			<div data-role="content">	
+				<form id="formulario">
+					<div id="divparam">
+						<label for="fecha_inicio"><h4>Calendario de rutas:</h4></label>			
+						<div data-role="fieldcontain">
+				         	<label for="fecha_inicio">Fecha Inicio:</label>
+				            <input name="fecha_inicio" id="fecha_inicio" value="16/05/2011" type="date" data-role="datebox" class="required" data-options='{"mode": "datebox", "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
+						</div>
+				        <div data-role="fieldcontain">
+				         	<label for="fecha_termino">Fecha T&eacute;rmino:</label>
+				            <input name="fecha_termino" id="fecha_termino" value="16/05/2013"type="date" data-role="datebox" class="required"  data-options='{"mode": "datebox", "disableManualInput": true , "useDialogForceTrue": true, "useDialogForceFalse": false}'>
+						</div>
+				        <a href="#" id="be" data-role="button" data-theme="a">Buscar Ejecutivo</a></li>
+					</div>
+					<div id="divparam">
+						<div data-role="fieldcontain">
+							<label for="ejecutivo">Ejecutivo:</label>
+				         	<select name="ejecutivo" id="ejecutivo"  class="required">
+	                        	<option value="" selected>Escoger un ejecutivo</option>
+	                        </select>
+						</div>
+					</div>	
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="buscar" data-icon="search" data-iconpos="notext">Buscar rutas de ejecutivo</a>  
+						</li>
+					</ul>
+				</div>			
+			</div>
+		</div>
+		<div data-role="page" id="visualizacion">
+			<div data-role="header">
+				<a href="../seguimiento_ruta.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>¿Como desea visualizar?</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>	
+			<div data-role="content">	
+				<ul data-role="listview">
+					<li><a href="#mapa" rel="external">Mapa de Rutas</a></li>
+		            <li><a href="#informeruta" rel="external">Tabla de Rutas</a></li>
+				</ul>		
+			</div>
+			<div data-role="footer">
+			</div>
+		</div>
+		<div id="mapa" data-role="page">
+            <div data-role="header">
+                <a href="seguimiento_ruta.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+                <h1 title="Rutas Encotradas">Rutas Encotradas</h1>
+            </div>
+            <div data-role="content">
+                  <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:10px;">
+                    <div id="canvas" style="height:550px;"></div>  
+                </div>
+            </div>
+        </div>
+        <div data-role="page" id="informeruta">
+			<div data-role="header">
+			   	<a href="#filtro" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Rutas Encotrada">Rutas Encotradas</h1>
+			   	<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+				<div data-role="fieldcontain">
+               		<label for="nombreejec">Nombre Ejecutivo:</label>
+               		<input type="text" name="nombreejec" id="nombreejec" value="" class="required" readonly />
+            	</div>
+				<div data-role="fieldcontain">
+               		<label for="rutejec">RUT Ejecutivo:</label>
+               		<input type="text" name="rutejec" id="rutejec" value="" class="required" readonly />
+            	</div>    
+            </div>        
+			<div data-role="content">
+				<div class="ui-grid-c"></div>
+		    </div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="sendmessege" data-icon="gear" data-iconpos="notext">Enviar Mensaje a Ejecutivo...</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="mensajeejecutivo">
+			<div data-role="header">
+				<a href="#mapa" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Seguimiento de Ruta - Enviar Mensaje">Seguimiento de Ruta - Enviar Mensaje a Ejecutivo</h1>
+				<a href="#mapa" rel="external" data-icon="home" data-iconpos="notext" style="float:right;margin-right:27px;">Home</a>				
+			</div>			
+			<div data-role="content">
+				<form name="formulario2" id="formulario2" >
+					<input type="hidden" name="c" value="Notification">
+					<input type="hidden" name="m" value="save">
+					<input type="hidden" name="id_application" value="3"> <!-- 3 IPOS MOBILE  -->
+					<input type="hidden" name="msg_id" value="">
+					<input type="hidden" name="msg_id_tipo" value="1">
+					<input type="hidden" name="msg_vigente" value="s">
+						<div data-role="fieldcontain">
+				        	<label for="msg_texto">Mensaje :</label>
+			        		<textarea rows="5" cols="40" autofocus name="msg_texto" id="msg_texto" wrap="hard" class="required"></textarea>
+						</div>
+						<div data-role="fieldcontain">
+               				<label for="msg_fecha_creacion">Fecha Creaci&oacute;n :</label>
+               				<input type="text" name="msg_fecha_creacion" id="msg_fecha_creacion" value="" class="required" readonly />
+            			</div>
+						<div data-role="fieldcontain">
+               				<label for="msg_fecha_activacion">Fecha Activaci&oacute;n :</label>
+               				<input type="text" name="msg_fecha_activacion" id="msg_fecha_activacion" value="" class="required" readonly />
+            			</div>
+						<div data-role="fieldcontain">
+                        	<label for="id_event">Tipo de Mensaje:</label>
+                         	<select name="id_event" id="id_event"  class="required">
+                            	<option value="" selected>Seleccionar un tipo de Mensaje</option>
+                        	</select>
+                   	 	</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="enviarmensaje" data-icon="check">Enviar Mensaje</a>
+						</li>
+					</ul>
+				</div>        
+            </div>
+		</div>
+	</body>
+</html>

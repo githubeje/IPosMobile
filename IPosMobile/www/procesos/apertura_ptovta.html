@@ -1,0 +1,106 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8"/>
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>	
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css"/>       
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script src="../js/generales.js"></script>
+		<script src="js/apertura_ptovta.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="principal">
+			<div data-role="header">
+		    	<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Apertura">Ipos - Procesos - Apertura</h1>
+			</div>			
+			<div data-role="content">
+				<div class="ui-btn-center" >	
+                   	Desea hacer la apertura del Stock?
+					<a href="#filtro" data-role="button" data-inline="true">Si</a>
+					<a href="index.html" rel="external" data-role="button" data-inline="true">No</a>
+               	</div>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+			</div>
+		</div>
+		<div data-role="page" id="filtro">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Apertura - Filtro">Ipos - Procesos - Apertura - Filtro</h1>
+			</div>			
+			<div data-role="content">
+				Busqueda de productos
+				<form method="get" id="formulario">
+					<div data-role="fieldcontain">
+			         	<label for="categoria">Categoria:</label>
+			         	<select name="categoria" id="categoria"  class="required">
+			            	<option value="" selected>Escoger Categoria</option>
+						</select>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="buscar" data-icon="search" data-iconpos="notext">Buscar</a>
+						</li>
+					</ul>
+				</div>  
+			</div>
+		</div>
+		<div data-role="page" id="listado">
+			<div data-role="header">
+		    	<a href="#filtro" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Apertura - Producto">Ipos - Procesos - Apertura - Producto</h1>
+		    	<a href="index.html" rel="external" data-icon="forward" data-iconpos="notext">Submenu</a>
+			</div>			
+			<div data-role="content">
+				<form method="post" id="formulario">
+					<div data-role="fieldcontain">
+                    	<label for="producto">Producto:</label>
+                    	<input name="producto" id="producto" type="text" readonly>
+                    	<input name="idproducto" id="idproducto" type="hidden" >
+                	</div>
+					<div data-role="fieldcontain">
+						<label for="stock">Stock:</label>
+						<input type="number" name="stock" id="stock" value="" class="required"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="stock">Precio:</label>
+						<input type="number" name="precio" id="precio" value=""/>
+					</div>
+                    <div data-role="fieldcontain">
+			         	<label for="diferencia">Diferencias:</label>
+			         	<select id="diferencia" name="diferencia" class="required">
+			            	<option value="0">No existe diferencia en stock</option>
+			            	<option value="1">Stock inferior al actual</option>
+			            	<option value="2">Stock superior al actual</option>
+			            </select>
+					</div>
+                    <div data-role="fieldcontain">
+			         	<label for="diferencia">Comentario:</label>
+			            <textarea rows="2" cols="20" name="comentario" id="comentario" wrap="hard"></textarea>	
+					</div>					
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li><a href="#" data-icon="save" data-iconpos="notext" id="registrar">Guardar</a></li> 
+						<li><a href="#" data-icon="arrow-r" data-iconpos="notext" id="next">Siguiente</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

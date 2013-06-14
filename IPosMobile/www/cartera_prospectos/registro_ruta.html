@@ -1,0 +1,228 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8">
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>
+      	<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">
+		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+        <script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script src="../jquery-mobile/jquery.ui.map.js"></script>
+        <script src="../jquery-mobile/jquery.ui.map.extensions.js"></script>
+        <script src="../jquery-mobile/moment.min.js"></script>
+		<script src="../js/generales.js"></script>
+		<script src="js/registro_ruta.js"></script>
+	</head> 
+	<body>
+		<div id="filtro" data-role="page">
+			<div data-role="header">
+		    	<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Hoja de Ruta - Registro Ruta">Ipos - Hoja de Ruta - Registro Ruta</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>
+			<div data-role="content">	
+				<form method="get" id="formulario">
+					<div data-role="fieldcontain">
+			         	<label for="inicio">Iniciando en :</label>
+			         	<select name="inicio" id="inicio"  class="required">
+                        	<option value="" selected>Escoger un inicio de Ruta</option>
+                        </select>
+					</div>
+					<div data-role="fieldcontain">						
+			         	<label for="fin">Terminando en :</label>
+			         	<select name="fin" id="fin"  class="required">
+                        	<option value="" selected>Escoger un fin de Ruta</option>
+                        </select>
+					</div>
+					<div data-role="fieldcontain">						
+			         	<label for="modo">Medio Transporte:</label>
+			         	<select name="modo" id="modo" class="required">
+                        	<option value="" selected>Escoger un modo de recorrer Ruta</option>
+			            	<option value="WALKING">A pie</option>
+			            	<option value="DRIVING">En automóvil</option>
+			            	<option value="TRANSIT">En transporte público</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">						
+			         	<label for="autopista">Eludir Autopista:</label>
+			         	<input type="checkbox" id="autopista" value="autopista"/>
+					</div>
+					<div data-role="fieldcontain">						
+			         	<label for="peaje">Eludir Peaje:</label>
+			         	<input type="checkbox" id="peaje" value="peaje"/>
+					</div>										
+					<div data-role="fieldcontain">						
+			         	<label for="indicaciones">Indicaciones:</label>
+			         	<input type="checkbox" id="indicaciones" value="indicaciones"/>
+					</div>										
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="buscar" data-icon="search" data-iconpos="notext">Buscar</a>
+						</li>
+					</ul>
+				</div>  
+			</div>
+		</div>
+		<div id="mapa" data-role="page">
+			<div data-role="header">
+		    	<a href="#filtro" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Mapa de Ruta</h1>
+			</div>
+			<div data-role="content">
+  				<div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+					<div id="canvas" style="height:350px;"></div>
+					<div id="display" style="height:120px;"></div>
+				</div>
+			</div>
+			<div data-role="footer">
+			</div>
+		</div>
+		<div data-role="page" id="registro">
+			<div data-role="header">
+		    	<a href="#mapa" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Registro Visita</h1>
+			</div>
+			<div data-role="content">
+		    	 <div data-role="fieldcontain">
+		            <label for="fecha">Fecha:</label>
+		            <input type="text" name="fecha" id="fecha" value="" readonly/>
+		        </div>
+		         <div data-role="fieldcontain">
+		            <label for="hora">Hora:</label>
+		            <input type="text" name="hora" id="hora" value="" readonly />
+		        </div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+		            <ul>
+		                <li><a href="#cliente" data-role="button">Datos Cliente</a></li>
+		                <li><a href="#pedido" data-role="button" >Datos Pedido</a></li>
+		                <li><a href="#estado_visita" data-role="button" >Estado Visita</a></li>
+                        <li><a href="#" data-role="button" id="grabar" >Guardar Visita</a></li>
+		            </ul>
+				</div>
+			</div>
+		</div>
+		<div data-role="page" id="cliente">
+			<div data-role="header">
+		    	<a href="#registro" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Datos Clientes</h1>
+			</div>
+			<div data-role="content">
+            	<form method="get" id="formulario1">
+                    <div data-role="fieldcontain">
+			         	<label for="rut">Rut:</label>
+			         	<select name="rut" id="rut"  class="required">
+                        	<option value="" selected>Escoger un Rut de Cliente</option>
+                        </select>
+					</div>
+                     <div data-role="fieldcontain">
+                          <label for="nombre">Nombres:</label>
+                          <input type="text" name="nombre" id="nombre" readonly/>
+                      </div>
+                     <div data-role="fieldcontain">
+                          <label for="correo">Correo:</label>
+                          <input type="email" name="correo" id="correo" readonly/>
+                      </div>
+                      <div data-role="fieldcontain">
+                          <label for="direccion">Direccion:</label>
+                          <input type="text" name="direccion" id="direccion" readonly/>
+                      </div>
+                </form>
+		    </div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#pedido" data-role="button" data-icon="arrow-r" data-iconpos="notext" id="next">Siguiente</a>
+						</li>
+					</ul>
+				</div>
+			</div>		    
+		 </div>
+		 <div data-role="page" id="pedido">
+			<div data-role="header">
+		    	<a href="#registro" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Datos Pedido</h1>
+		    	<a href="#detalle_pedido" data-icon="page" id="count">0</a>
+			</div>
+			<div data-role="content">
+            	<form method="get" id="formulario2">
+                    <div data-role="fieldcontain">
+                        <label for="producto">Producto:</label>
+                        <select id="producto" name="producto" class="required">
+                            <option value="" selected>Escoger Producto</option>
+                        </select>
+                    </div>
+                   <div data-role="fieldcontain">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" name="cantidad" id="cantidad" class="required"/>
+                    </div>
+                   <div data-role="fieldcontain">
+                        <label for="precio">Precio:</label>
+                        <input type="number" name="precio" id="precio"  class="required" />
+                    </div>
+                </form>
+		    </div>
+            <div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li><a href="#cliente" data-role="button" data-icon="arrow-l" data-iconpos="notext" id="previous">Anterior</a></li>
+						<li><a href="#estado_visita" data-role="button" data-icon="arrow-r" data-iconpos="notext" id="next">Siguiente</a></li>
+						<li><a href="#" id="agregar_producto" data-role="button" data-icon="plus" data-iconpos="notext" >Agregar producto</a></li>
+					</ul>
+				</div>
+			</div>		    
+		 </div>
+		  <div data-role="page" id="estado_visita">
+			<div data-role="header">
+		    	<a href="#registro" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Estado de Visita</h1>
+			</div>
+			<div data-role="content">
+            	<form method="get" id="formulario3">
+                      <div data-role="fieldcontain">
+                          <label for="estado">Estado:</label>
+                          <select id="estado" name="estado" class="required">
+                              <option value="" selected>Escoger Estado</option>
+                              <option value="1">Visita Exitosa</option>
+                              <option value="2">Visita No Exitosa</option>
+                          </select>
+                      </div>
+                     <div data-role="fieldcontain">
+                          <label for="comentario">Comentario:</label>
+                          <textarea rows="2" cols="20" name="comentario" id="comentario" wrap="hard" class="required"></textarea>
+                      </div>
+                </form>
+		    </div>
+			<div data-role="footer" data-position="fixed">
+				<div data-role="navbar">			
+					<ul>
+						<li><a href="#pedido" data-role="button" data-icon="arrow-l" data-iconpos="notext" id="previous">Anterior</a></li>
+						<li><a href="#registro" data-role="button" data-icon="arrow-r" data-iconpos="notext" id="next">Siguiente</a></li>
+					</ul>
+				</div>
+			</div>		    
+		</div>
+		<div data-role="page" id="detalle_pedido">
+			<div data-role="header">
+		    	<a href="#pedido" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Detalle Pedido</h1>
+			</div>
+			<div data-role="content">
+				<div class="ui-grid-c" ></div>
+		    </div>
+		</div>
+	</body>
+</html>

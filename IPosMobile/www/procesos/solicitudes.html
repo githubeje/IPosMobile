@@ -1,0 +1,229 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8"/>
+		<title>Punto de Venta</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>	
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">        
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>		
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+        <script src="../jquery-mobile/moment.min.js"></script>
+		<script src="../js/generales.js"></script>
+        <script src="../js/jshashtable-2.1.js"></script>
+        <script src="js/solicitudes.js"></script>	
+	</head> 
+	<body>
+    	<div data-role="page" id="principal">
+        	<div data-role="header">
+				<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes">Ipos - Procesos - Solicitudes</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+            <div data-role="content">
+		      	<ul data-role="listview">
+					<li><a href="#productos">Productos / Servicios</a></li>
+		            <li><a href="#devoluciones">Devoluciones</a></li>
+					<li><a href="#cambio_precio">Cambio Precio</a></li>
+					<li><a href="#informes">Informes</a></li>
+				</ul>
+            </div>
+        </div> 
+		<div data-role="page" id="productos">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes - Productos">Ipos - Procesos - Solicitudes - Productos</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+				<form method="post" id="formulario1">
+					<div data-role="fieldcontain">
+						<label for="categoria1">Categoria:</label>
+						<select name="categoria1" id="categoria1"  class="required">
+							<option value="" selected>Escoger Categoria</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="producto1">Producto:</label>
+						<select name="producto1" id="producto1" class="required">
+            				<option value="" selected>Escoger Producto / Servicio</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+                      <label for="cantidad1">Cantidad:</label>
+                      <input type="number" name="cantidad1" id="cantidad1" value="" class="required number" />
+					</div>
+					<div data-role="fieldcontain">
+                        <label for="fecha">Fecha:</label>
+                        <input type="text" name="fecha" id="fecha" value="" readonly/>
+					</div>
+					<div data-role="fieldcontain">
+                        <label for="hora">Hora:</label>
+                        <input type="text" name="hora" id="hora" value="" readonly/>
+                    </div>
+					<div data-role="fieldcontain">
+                        <label for="comentario1">Comentario:</label>
+                        <input type="text" name="comentario1" id="comentario1" value=""/>
+					</div>
+		      </form>
+		  	</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="save_producto" data-icon="save" data-iconpos="notext">Guardar</a>
+							<a href="#" id="agregar_producto" data-icon="plus" data-iconpos="notext" >Agregar producto</a>
+							<a href="#listado_solicitud" data-icon="page" id="count" >0</a>
+						</li>
+					</ul>
+				</div>			
+			</div>
+		</div>
+        <div data-role="page" id="devoluciones">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes - Devoluciones">Ipos - Procesos - Solicitudes - Devoluciones</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+				<form method="post" id="formulario2">
+					<div data-role="fieldcontain">
+						<label for="categoria2">Categoria:</label>
+						<select name="categoria2" id="categoria2"  class="required">
+							<option value="" selected>Escoger Categoria</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="producto2">Producto:</label>
+						<select name="producto2" id="producto2" class="required">
+							<option value="" selected>Escoger Producto / Servicio</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="cantidad2">Cantidad:</label>
+						<input type="text" name="cantidad2" id="cantidad2" value="" class="required number"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="fecha2">Fecha:</label>
+						<input type="text" name="fecha2" id="fecha2" value="" readonly/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="hora2">Hora:</label>
+						<input type="text" name="hora2" id="hora2" value="" readonly/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="comentario2">Comentario:</label>
+						<input type="text" name="comentario2" id="comentario2" value=""/>
+					</div>
+                </form>
+            </div>
+            <div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="save_devolucion" data-icon="save" data-iconpos="notext">Guardar</a>  
+							<a href="#" id="agregar_devolucion" data-icon="plus" data-iconpos="notext">Agregar producto</a>
+							<a href="#listado_solicitud" data-icon="page" id="count2">0</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </div>
+		<div data-role="page" id="cambio_precio">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes - Cambio Precio">Ipos - Procesos - Solicitudes - Cambio Precio</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+			<div data-role="content">
+				<form method="post" id="formulario3">
+					<div data-role="fieldcontain">
+						<label for="categoria3">Categoria:</label>
+						<select name="categoria3" id="categoria3"  class="required">
+							<option value="" selected>Escoger Categoria</option>
+						</select>
+					</div>
+					<div data-role="fieldcontain">
+	                    <label for="producto3">Producto:</label>
+    	                 <select name="producto3" id="producto3" class="required">
+        	                <option value="" selected>Escoger Producto / Servicio</option>
+            	          </select>
+                	</div>
+                	<div data-role="fieldcontain">
+                    	<label for="precio_base">Precio Base:</label>
+                    	<input type="number" name="precio_base" id="precio_base" value="" class="required number" readonly/>
+                	</div>
+                 	<div data-role="fieldcontain">
+                    	<label for="nuevo_precio_base">Nuevo Precio Base:</label>
+                    	<input type="number" name="nuevo_precio_base" id="nuevo_precio_base" value="" class="required number"/>
+                	</div>
+                 	<div data-role="fieldcontain">
+                    	<label for="tope_descuento" title="Descuento m&aacute;ximo para el producto">Descuento M&aacute;ximo:</label>
+                    	<input type="number" name="tope_descuento" id="tope_descuento" value="" class="required number"/>
+                	</div>
+                  	<div data-role="fieldcontain">
+	                    <label for="fecha_cambio">Fecha:</label>
+    	                <input type="text" name="fecha_cambio" id="fecha_cambio" value="" readonly/>
+        	        </div>
+            	       <div data-role="fieldcontain">
+                	    <label for="hora_cambio">Hora:</label>
+                    	<input type="text" name="hora_cambio" id="hora_cambio" value="" readonly/>
+                	</div>
+                  	<div data-role="fieldcontain">
+                    	<label for="usuario_autorizacion">Usuario Autorización:</label>
+                     	<select name="usuario_autorizacion" id="usuario_autorizacion" class="required">
+                        	<option value="" selected>Escoger Usuario Autorizador</option>
+                      	</select>
+                	</div>
+                 	<div data-role="fieldcontain">
+						<label for="comentario3">Comentario:</label>
+						<input type="text" name="comentario3" id="comentario3" value=""/>
+                    </div>
+					<div style="visibility:hidden">
+    	                 <select name="productoprecio" id="productoprecio"></select>					
+					</div>
+              </form>
+            </div>
+            <div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<a href="#" id="save_cambioprecio" data-icon="save" data-iconpos="notext">Guardar</a>
+							<a href="#" id="agregar_cambioprecio" data-icon="plus" data-iconpos="notext">Agregar producto</a>
+							<a href="#listado_solicitud" data-icon="page" id="count3">0</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+        </div>
+		<div data-role="page" id="listado_solicitud">
+			<div data-role="header">
+		    	<a href="#" data-rel="back" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes - Listado Productos">Ipos - Procesos - Solicitudes - Listado Productos</h1>
+			</div>
+			<div data-role="content">
+				<div class="ui-grid-d" ></div>
+		    </div>
+		</div>	
+		<div data-role="page" id="informes">
+        	<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1 title="Ipos - Procesos - Solicitudes - Informes">Ipos - Procesos - Solicitudes - Informes</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>
+			</div>
+            <div data-role="content">
+		      	<ul data-role="listview">
+					<li><a href="solinformes.html?informe=1" rel="external" data-ajax="false">Productos / Servicios</a></li>
+		            <li><a href="solinformes.html?informe=2" rel="external" data-ajax="false">Devoluciones</a></li>
+					<li><a href="solinformes.html?informe=3" rel="external" data-ajax="false">Cambio Precio</a></li>
+				</ul>            
+            </div>	
+		</div>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html> 
+<html lang="es">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<meta charset="utf-8"/>
+		<title>Alertas Outbound</title>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile-1.2.0.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/jqm-icon-pack-2.1.2-fa.css"/>	
+        <link rel="stylesheet" type="text/css" href="../jquery-mobile/jquery.mobile.simpledialog.min.css">
+		<link rel="stylesheet" type="text/css" href="../jquery-mobile/app.css">        
+		<script src="../jquery-mobile/jquery-1.8.3.min.js"></script>
+		<script src="../jquery-mobile/jquery.mobile-1.2.0.min.js"></script>
+		<script src="../jquery-mobile/jquery.chained.js"></script>		
+		<script src="../jquery-mobile/jquery.validate.min.js"></script>
+		<script src="../jquery-mobile/messages_es.js"></script>
+        <script src="../jquery-mobile/jquery.mobile.simpledialog2.min.js"></script>
+		<script src="../js/generales.js"></script>
+		<script src="js/otros.js"></script>
+	</head> 
+	<body>
+		<div data-role="page" id="principal">
+			<div data-role="header">
+				<a href="index.html" rel="external" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Ipos - Alertas - Otros</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>			
+			<div data-role="content">
+				<ul data-role="listview">
+					<li><a href="#nueva_cartera">Nueva Cartera Asignada</a></li>
+                    <li><a href="#metas_venta">Metas de Venta</a></li>
+                    <!--<li><a href="#cambio_localizacion">Informe Punto de Venta</a></li>
+                    <li><a href="#cambio_turnos">Informe Punto de Venta</a></li>
+                    <li><a href="#cambio_ptovta">Informe Punto de Venta</a></li>
+                    <li><a href="#cambio_horarios">Informe Punto de Venta</a></li>-->
+                    <li><a href="#cumplimiento_metas">Cumplimiento de Metas</a></li>
+                    <li><a href="#retroalimentacion">Retroalimentacion Pto. de Venta</a></li>
+                    <!--<li><a href="#itinerario_visita">Informe Punto de Venta</a></li>
+                    <li><a href="#cambio_precios_promocion">Informe Punto de Venta</a></li>-->
+		            
+				</ul>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<h4>&nbsp;</h4>
+			</div>
+		</div>
+        <div data-role="page" id="nueva_cartera">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Ipos - Nueva Cartera Asignada</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>			
+			<div data-role="content">
+				<form method="get" id="formulario1">
+					<div data-role="fieldcontain">
+			         	<label for="comentario1">Comentario:</label>
+			         	<textarea rows="2" cols="20" name="comentario1" id="comentario1" wrap="hard"></textarea>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<h4></h4>
+				<input type="button" id="enviar1" name="enviar1" value="Enviar" class="ui-footer ui-btn-right"/>				
+			</div>
+		</div>
+        <div data-role="page" id="metas_venta">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Ipos - Metas de Venta</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>			
+			<div data-role="content">
+				<form method="get" id="formulario2">
+					<div data-role="fieldcontain">
+			         	<label for="comentario2">Comentario:</label>
+			         	<textarea rows="2" cols="20" name="comentario2" id="comentario2" wrap="hard"></textarea>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<input type="button" id="enviar2" name="enviar2" value="Enviar" class="ui-footer ui-btn-right"/>
+						</li>
+					</ul>
+				</div>				
+			</div>
+		</div>
+        <div data-role="page" id="cumplimiento_metas">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Ipos - Cumplimiento de Metas</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>			
+			<div data-role="content">
+				<form method="get" id="formulario3">
+                	<div data-role="fieldcontain">
+                      <label for="solicitu3">Solicitud:</label>
+                      <select name="solicitud3" id="solicitud3" class="required">
+            				<option value="" selected>Escoger Tipo Solicitud</option>
+       	  			  </select>
+                  </div>
+					<div data-role="fieldcontain">
+			         	<label for="comentario3">Comentario:</label>
+			         	<textarea rows="2" cols="20" name="comentario3" id="comentario3" wrap="hard"></textarea>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<input type="button" id="enviar3" name="enviar3" value="Enviar"/>
+						</li>
+					</ul>
+				</div>				
+			</div>
+		</div>
+        <div data-role="page" id="retroalimentacion">
+			<div data-role="header">
+				<a href="#principal" data-icon="back" data-iconpos="notext">Atrás</a>
+				<h1>Ipos - Retroalimentacion Pto. de Venta</h1>
+				<a href="../index.html" rel="external" data-icon="home" data-iconpos="notext">Home</a>				
+			</div>			
+			<div data-role="content">
+				<form method="get" id="formulario4">
+                	<div data-role="fieldcontain">
+                      <label for="solicitud4">Solicitud:</label>
+                      <select name="solicitud4" id="solicitud4" class="required">
+            				<option value="" selected>Escoger Tipo Solicitud</option>
+       	  			  </select>
+                  </div>
+					<div data-role="fieldcontain">
+			         	<label for="comentario4">Comentario:</label>
+			         	<textarea rows="2" cols="20" name="comentario4" id="comentario4" wrap="hard"></textarea>
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed" >
+				<div data-role="navbar">			
+					<ul>
+						<li>
+							<input type="button" id="enviar4" name="enviar4" value="Enviar" class="ui-footer ui-btn-right"/>
+						</li>
+					</ul>
+				</div>				
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
